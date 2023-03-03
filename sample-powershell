@@ -1,10 +1,10 @@
 # Set variables
-$rgName = "<resource_group_name>"
-$vnetName = "<vnet_name>"
-$subnetName = "<subnet_name>"
-$location = "<location>"
-$vnetAddressPrefix = "10.0.0.0/16"
-$subnetAddressPrefix = "10.0.0.0/24"
+$rgName = "class2"
+$vnetName = "HONetwork"
+$subnetName = "WorkSubnet"
+$location = "eastus"
+$vnetAddressPrefix = "172.16.0.0/16"
+$subnetAddressPrefix = "172.16.10.0/24"
 
 # Create resource group
 New-AzResourceGroup -Name $rgName -Location $location
