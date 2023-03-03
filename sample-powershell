@@ -1,0 +1,17 @@
+# Set variables
+$rgName = "<resource_group_name>"
+$vnetName = "<vnet_name>"
+$subnetName = "<subnet_name>"
+$location = "<location>"
+$vnetAddressPrefix = "10.0.0.0/16"
+$subnetAddressPrefix = "10.0.0.0/24"
+
+# Create resource group
+New-AzResourceGroup -Name $rgName -Location $location
+
+# Create virtual network
+$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location `
+        -AddressPrefix $vnetAddressPrefix
+$subnet = Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet `
+          -AddressPrefix $subnetAddressPrefix
+Set-AzVirtualNetwork -VirtualNetwork $vnet
