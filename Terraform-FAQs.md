@@ -15,8 +15,8 @@ Unintended changes can be caught early in the development process.
 
 # What are the different Terraform providers that enable the management of Azure infrastructure?
 
-AzureRM: Manage stable Azure resources 
-AzureAD: Manage Azure Active directory resources 
-AzureDevops: Manage Azure DevOps resources 
-AzAPI: Azure Resource Manager APIs directly managed 
-Azure Stack: Manage Azure Stack resources 
+**AzureRM: Manage stable Azure resources |
+AzureAD: Manage Azure Active directory resources |
+AzureDevops: Manage Azure DevOps resources |
+AzAPI: Azure Resource Manager APIs directly managed |
+Azure Stack: Manage Azure Stack resources **
