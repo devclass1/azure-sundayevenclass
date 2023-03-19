@@ -1,13 +1,15 @@
+# Configure the Azure provider
 terraform {
-  required_providers {
-    azurerm = {
-      source = "hashicorp/azurerm"
-      version = "3.48.0"
-    }
-  }
-
+required_providers {
+azurerm = {
+source = "hashicorp/azurerm"
+version = "~> 3.0.2"
+}
+}
+required_version = ">= 1.1.0"
+}
 provider "azurerm" {
-  features {}
+features {}
 }
 
 resource "azurerm_resource_group" "example" {
@@ -20,7 +22,7 @@ resource "azurerm_service_plan" "example" {
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
   os_type             = "Linux"
-  sku_name            = "S1"
+  sku_name            = "B1"
 }
 
 
