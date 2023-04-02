@@ -1,23 +1,21 @@
-output "id" {
-  value = azurerm_kubernetes_cluster.example.id
+resource "azurerm_resource_group" "example" {
+  name     = "${var.prefix}-k8s-resources"
+  location = var.location
 }
 
-output "kube_config" {
-  value = azurerm_kubernetes_cluster.example.kube_config_raw
-}
+resource "azurerm_kubernetes_cluster" "example" {
+  name                = "${var.prefix}-k8s"
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
+  dns_prefix          = "${var.prefix}-k8s"
 
-output "client_key" {
-  value = azurerm_kubernetes_cluster.example.kube_config.0.client_key
-}
+  default_node_pool {
+    name       = "default"
+    node_count = 1
+    vm_size    = "Standard_DS2_v2"
+  }
 
-output "client_certificate" {
-  value = azurerm_kubernetes_cluster.example.kube_config.0.client_certificate
-}
-
-output "cluster_ca_certificate" {
-  value = azurerm_kubernetes_cluster.example.kube_config.0.cluster_ca_certificate
-}
-
-output "host" {
-  value = azurerm_kubernetes_cluster.example.kube_config.0.host
+  identity {
+    type = "SystemAssigned"
+  }
 }
